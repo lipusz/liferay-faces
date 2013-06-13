@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head />
+	<h:body styleClass="icefaces3-portlet ltr">
+		<center>
+			<h:commandButton id="show" value="Show Dialog"
+				onclick="sampleDialog.show();" type="button" />
+		</center>
+
+		<ace:dialog
+			id="dialog"
+			header="A sample dialog overview example"
+			widgetVar="sampleDialog"
+			closable="false"
+			modal="true"
+			draggable="false"
+			showEffect="clip"
+			hideEffect="fade"
+			width="400">
+
+			<h:form id="inputForm">
+				<h:panelGrid columns="2" width="100%">
+					<h:outputLabel id="firstNameLabel" for="firstNameInputField"
+						value="First Name:" />
+					<h:inputText id="firstNameInputField"
+						value="#{dialogBean.firstName}" />
+
+					<h:outputLabel id="lastNameLabel" for="lastNameInputField"
+						value="Last Name:" />
+					<h:inputText id="lastNameInputField" value="#{dialogBean.lastName}" />
+				</h:panelGrid>
+
+				<h:panelGrid width="100%" style="text-align: center;">
+					<h:commandButton id="submit" value="Click me once done with input"
+						onclick="sampleDialog.hide();" />
+				</h:panelGrid>
+			</h:form>
+		</ace:dialog>
+
+		<h:form id="outputForm">
+			<h:panelGrid id="outputPanel" columns="2">
+				<h:outputLabel value="Entered text: " for="enteredName" />
+				<h:outputText id="enteredName"
+					value="#{dialogBean.firstName} #{dialogBean.lastName}" />
+			</h:panelGrid>
+		</h:form>
+
+	</h:body>
+</f:view>
